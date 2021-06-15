@@ -7,6 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import Filmes from './pages/Filmes';
 
 const Stack = createStackNavigator();
 
@@ -46,7 +47,8 @@ export default function routes() {
       <NavigationContainer>
         <Stack.Navigator>
           {token ? (
-            <Stack.Screen name="Dashboard" component={Dashboard} />
+            <Stack.Screen name="Filmes" component={Filmes} />
+            // <Stack.Screen name="Dashboard" component={Dashboard} />
           ) : (
             <Stack.Screen name="Login" component={Login} options={{headerShown:false}} />
           )}
