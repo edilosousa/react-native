@@ -4,7 +4,7 @@ export const Container = styled.SafeAreaView`
     flex: 1;
     align-items: center;
     justify-content: center;
-    background-color: #FFF;
+    background-color: #F8F8FF;
 `;
 
 export const Logo = styled.View`
@@ -23,7 +23,7 @@ export const Input = styled.TextInput`
 `;
 
 export const ButtomForm = styled.TouchableOpacity`
-    background-color: #fff;
+    background-color: #F0F8FF;
     width: 90%;
     height: 40px;
     align-items: center;

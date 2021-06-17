@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
     tinyLogo: {
       width: 350,
       height: 50,
+      borderRadius: 7,
     }
   });
 
@@ -33,7 +34,7 @@ export default function Login(){
                 Alert.alert("",response.data.message);
             }else{
                 AsyncStorage.setItem('@token',response.data.token);
-                // Alert.alert("",response.data.token);
+                // Alert.alert("",response.data.dados.usuario);
                 // Alert.alert("",response.data.message);
                 // navigation.navigate('Dashboard');
                 signIn();

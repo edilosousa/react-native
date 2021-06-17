@@ -6,8 +6,7 @@ import { AuthContext } from './contexts/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
-import Filmes from './pages/Filmes';
+import Home from './pages/Home';
 
 const Stack = createStackNavigator();
 
@@ -47,8 +46,7 @@ export default function routes() {
       <NavigationContainer>
         <Stack.Navigator>
           {token ? (
-            <Stack.Screen name="Filmes" component={Filmes} />
-            // <Stack.Screen name="Dashboard" component={Dashboard} />
+            <Stack.Screen name="Controle de acesso" component={Home} />
           ) : (
             <Stack.Screen name="Login" component={Login} options={{headerShown:false}} />
           )}
@@ -57,3 +55,5 @@ export default function routes() {
     </AuthContext.Provider>
   );
 }
+
+

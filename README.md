@@ -13,6 +13,7 @@ Dependencia para navegar entra pages
 ### expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
 
 ### npm install @react-navigation/stack
+### npm install @react-navigation/bottom-tabs
 
 Caso apresente erro , rode os seguintes comandos.
 
@@ -27,3 +28,9 @@ Transformar o CSS em componentes
 
 Dependencia que armazena dados persistentes no dispositivo
 ### expo install @react-native-async-storage/async-storage
+
+Pacote de icones
+### yarn add react-native-vector-icons
+
+Instalar o table react native
+### npm install react-native-table-component
