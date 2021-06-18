@@ -1,10 +1,10 @@
 // You can import Ionicons from @expo/vector-icons if you use Expo or
 // react-native-vector-icons/Ionicons otherwise.
-import React, {useContext} from 'react';
-import { Alert, Text, View } from 'react-native';
+import React, { useContext } from 'react';
+import { Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Usuarios from '../Cadastro';
+import Usuarios from '../Cadastro/index';
 
 function HomeScreen() {
   return (
@@ -14,47 +14,47 @@ function HomeScreen() {
   );
 }
 
-function Sair(){
-  return(null)
+function Sair() {
+  return (null)
 }
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{
-          tabBarLabel: 'Home',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home" color={color} size={size} />
-          ),
-        }}
-      />
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ color, size }) => {
+          let iconName;
+          switch (route.name) {
+            case 'Home':
+              iconName = 'home';
+              break;
+            case 'User':
+              iconName = 'people';
+              break;
+            case 'Off':
+              iconName = 'exit';
+              break;
+            default:
+              iconName = 'ellipsis-horizontal-circle';
+              break;
+          }
 
-      <Tab.Screen
-        name="User"
-        component={Usuarios}
-        options={{
-          tabBarLabel: 'Usuários',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="people" color={color} size={size} />
-          ),
-        }}
-      />
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+      })}
+      tabBarOptions={{
+        activeTintColor: '#1E90FF',
+        inactiveTintColor: '#777',
+        showLabel: false,
+      }}
+    >
+      <Tab.Screen name="Home" component={HomeScreen}/>
 
-      <Tab.Screen
-        name="Off"
-        component={Sair}
-        options={{
-          tabBarLabel: 'Sair',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="exit" color={color} size={size} />
-          ),
-        }}
-      />
+      <Tab.Screen name="User" component={Usuarios}/>
+
+      <Tab.Screen name="Off" component={Sair}/>
     </Tab.Navigator>
   );
 }

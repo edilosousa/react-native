@@ -47,17 +47,19 @@ export const styles = StyleSheet.create({
     },
     item: {
         backgroundColor: "#FFF",
-        padding: 30,
+        paddingTop: 10,
+        paddingBottom: 10,
+        paddingLeft: 5,
         marginVertical: 9,
         marginHorizontal: 6,
         alignSelf: 'stretch',
         textAlign: 'center',
         borderWidth: 1,
-        borderRadius: 5,    
+        borderRadius: 1,    
         borderColor: '#D3D3D3'
     },
     title: {
-        fontSize: 18,
+        fontSize: 12,
         color: '#808080'
     },
     flat: {
@@ -74,5 +76,10 @@ export const styles = StyleSheet.create({
     headerText:{
         color: '#4F4F4F',
         fontSize:18
+    },
+    icon:{
+        marginTop: '5%',
+        marginLeft:'90%',
+        position: 'absolute'
     }
 });

@@ -1,13 +1,13 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { View, Text, FlatList, Alert, StyleSheet, StatusBar, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import api from '../../config/configApi';
 
 import { AuthContext } from '../../contexts/auth';
 import { Container, ButtomSignOut, TextSignOut, styles } from './styles';
-import {Table, TableWrapper, Row, Rows, Col, Cols, Cell} from 'react-native-table-component'
+import { Ionicons } from '@expo/vector-icons';
+import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component'
 
-
-export default function Dashboard() {
+export default function Dashboard({navigation}) {
     const { signOut } = useContext(AuthContext);
     const [user, setUser] = useState([]);
 
@@ -19,21 +19,28 @@ export default function Dashboard() {
     useEffect(() => {
         lista();
     }, [])
-    const Item = ({ title }) => (
-        <TouchableOpacity onPress={()=> Alert.alert("",title)}>
+    const Item = ({ id, nome, email }) => (
+        <TouchableOpacity>
             <View style={styles.item}>
-                <Text style={styles.title}>{title}</Text>
+                {/* <Ionicons style={styles.icon} name="information-circle-outline" size={30} color="black"/> */}
+                <Text style={styles.title}>ID: {id}</Text>
+                <Text style={styles.title}>Nome: {nome}</Text>
+                <Text style={styles.title}>e-mail: {email}</Text>
             </View>
         </TouchableOpacity>
 
     );
     const renderItem = ({ item }) => (
-        <Item title={item.nome}/>
+        <Item
+            id={item.id}
+            nome={item.nome}
+            email={item.email}
+        />
     );
 
     return (
         // <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        
+
         <Container>
             <View style={styles.header}>
                 <Text style={styles.headerText}>Usuários cadastrados</Text>
@@ -42,12 +49,13 @@ export default function Dashboard() {
                 data={user.usuarios}
                 renderItem={renderItem}
                 keyExtractor={item => item.id.toString()}
+
             />
-            <ButtomSignOut onPress={() => signOut()}>
+            {/* <ButtomSignOut onPress={() => signOut()}>
                 <TextSignOut>
                     Sair
                 </TextSignOut>
-            </ButtomSignOut>
+            </ButtomSignOut> */}
         </Container>
         // </ScrollView>
     )
